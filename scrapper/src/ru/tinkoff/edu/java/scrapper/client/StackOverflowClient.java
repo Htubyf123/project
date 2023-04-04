@@ -2,6 +2,7 @@ package ru.tinkoff.edu.java.scrapper.client;
 
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
+import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import ru.tinkoff.edu.java.scrapper.dto.QuestionResponse;
 
@@ -9,11 +10,13 @@ import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 
+@Service
 public class StackOverflowClient {
     private final WebClient webClient;
+    private final String BASE_URL = "https://api.stackexchange.com/2.3";
 
     public StackOverflowClient() {
-        webClient = WebClient.create("https://api.stackexchange.com/2.3");
+        webClient = WebClient.create(BASE_URL);
     }
 
     public StackOverflowClient(String baseUrl) {
@@ -32,7 +35,7 @@ public class StackOverflowClient {
     }
 
     private String requestQuestion(long id) {
-        return webClient.get().uri("/questions/" + id + "?site=stackoverflow").
+        return webClient.get().uri("/questions/{id}?site=stackoverflow", id).
                 retrieve().bodyToMono(String.class).share().block();
     }
 }
