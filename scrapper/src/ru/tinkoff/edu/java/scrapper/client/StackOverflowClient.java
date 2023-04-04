@@ -2,7 +2,6 @@ package ru.tinkoff.edu.java.scrapper.client;
 
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
-import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import ru.tinkoff.edu.java.scrapper.dto.QuestionResponse;
 
@@ -10,7 +9,6 @@ import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 
-@Service
 public class StackOverflowClient {
     private final WebClient webClient;
     private final String BASE_URL = "https://api.stackexchange.com/2.3";
