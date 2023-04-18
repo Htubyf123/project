@@ -1,3 +1,4 @@
+package main.java;
 public record GitHubURLParser() implements SiteParser {
 
     public ParsedUrl parse(String url) {
