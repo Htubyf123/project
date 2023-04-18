@@ -17,7 +17,7 @@ public class BotTest {
 
     @BeforeAll
     public static void init() {
-        bot = new pomogator2001_bot ("5686265283:AAFiHvfNcGjFNOXzsQDvSB-FIBYA20KQ500");
+        bot = new pomogator2001_bot ("5686265283:AAFiHvfNcGjFNOXzsQDvSB-FIBYA20KQ500", null);
         testChatId = 795253839;
     }
 
