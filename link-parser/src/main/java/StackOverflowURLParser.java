@@ -1,3 +1,4 @@
+package main.java;
 public record StackOverflowURLParser() implements SiteParser {
     public ParsedUrl parse(String url) {
         if (url.startsWith("https://stackoverflow.com/questions/")) {

@@ -1,3 +1,4 @@
+package main.java;
 public record NullURLParser() {
     private static GitHubURLParser gitHubParser;
     private static StackOverflowURLParser stackOverflowParser;
