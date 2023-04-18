@@ -1,4 +1,4 @@
-package ru.tinkoff.edu.java.bot.test;
+package test;
 
 import com.pengrad.telegrambot.model.Message;
 import com.pengrad.telegrambot.model.MessageEntity;
@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import ru.tinkoff.edu.java.bot.pomogator2001_bot;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BotTest {
     private static pomogator2001_bot bot;
