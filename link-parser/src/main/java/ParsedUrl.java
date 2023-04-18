@@ -1,3 +1,3 @@
 package main.java;
-sealed interface ParsedUrl permits GithubRepository, StackOverflowQuestion {
+public sealed interface ParsedUrl permits GithubRepository, StackOverflowQuestion {
 }

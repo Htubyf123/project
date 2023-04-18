@@ -1,3 +1,3 @@
 package main.java;
-public record StackOverflowQuestion (String question) implements ParsedUrl {
+public record StackOverflowQuestion (long id) implements ParsedUrl {
 }

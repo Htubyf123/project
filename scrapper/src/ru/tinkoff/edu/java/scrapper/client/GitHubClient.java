@@ -4,6 +4,7 @@ import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.web.reactive.function.client.WebClient;
 import ru.tinkoff.edu.java.scrapper.dto.RepositoryResponse;
+import main.java.GithubRepository;
 import java.time.OffsetDateTime;
 
 public class GitHubClient {
@@ -18,17 +19,17 @@ public class GitHubClient {
     }
 
 
-    public RepositoryResponse fetchRepository (String user, String repository) {
+    public RepositoryResponse fetchRepository (GithubRepository repo) {
         try {
-            JSONObject obj = new JSONObject(requestRepository(user, repository));
+            JSONObject obj = new JSONObject(requestRepository(repo.user(), repo.repository()));
             return new RepositoryResponse(obj.getString("full_name"),
-                    OffsetDateTime.parse(obj.getString("updated_at")));
+                    OffsetDateTime.parse(obj.getString("pushed_at")));
         } catch (JSONException e) {
             return null;
         }
     }
     private String requestRepository(String user, String repository) {
         return webClient.get().uri("/repos/{user}/{repo}", user, repository).
-                retrieve().bodyToMono(String.class).share().block();
+                retrieve().bodyToMono(String.class).block();
     }
 }
