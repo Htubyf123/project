@@ -29,8 +29,5 @@ public class ClientConfiguration {
         return new ScrapperClient();
     }
 
-    @Bean
-    public long schedulerInterval(ApplicationConfig config) {
-        return config.scheduler().interval().toMillis();
-    }
+
 }

@@ -1,7 +1,6 @@
 package ru.tinkoff.edu.java.scrapper.service.jdbc;
 
 import main.java.ParsedUrl;
-import org.springframework.stereotype.Service;
 import ru.tinkoff.edu.java.bot.exceptions.InvalidParametersException;
 import main.java.NullURLParser;
 import ru.tinkoff.edu.java.scrapper.database.dto.Link;
@@ -20,7 +19,6 @@ import ru.tinkoff.edu.java.scrapper.service.LinkService;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-@Service
 public class JdbcLinkService implements LinkService {
     private final ChatLinkRepository chatLinkRepository;
     private final LinkRepository linkRepository;

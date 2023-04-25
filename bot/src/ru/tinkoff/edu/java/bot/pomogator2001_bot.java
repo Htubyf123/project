@@ -11,7 +11,7 @@ import ru.tinkoff.edu.java.bot.annotation.Command;
 import ru.tinkoff.edu.java.scrapper.client.ScrapperClient;
 import ru.tinkoff.edu.java.scrapper.dto.AddLinkRequest;
 import ru.tinkoff.edu.java.scrapper.dto.RemoveLinkRequest;
-
+import main.java.NullURLParser;
 import java.lang.reflect.Method;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -62,6 +62,9 @@ public class pomogator2001_bot extends Bot {
             return sendMessage(chatId, "Формат команды должен быть: /track 'ссылка'");
         }
         String url = words[1];
+        if(NullURLParser.parse(url) == null){
+            return sendMessage(chatId, "Ссылка невалидная");
+        }
         try {
             scrapperClient.addLink(chatId, new AddLinkRequest(new URI(url)));
             return sendMessage(chatId, "Ссылка теперь отслеживается");
@@ -77,6 +80,9 @@ public class pomogator2001_bot extends Bot {
             return sendMessage(chatId, "Формат команды должен быть: /untrack 'ссылка'");
         }
         String url = words[1];
+        if(NullURLParser.parse(url) == null){
+            return sendMessage(chatId, "Ссылка невалидная");
+        }
         try {
             scrapperClient.deleteLink(chatId, new RemoveLinkRequest(new URI(url)));
             return sendMessage(chatId, "Ссылка теперь не отслеживается");
