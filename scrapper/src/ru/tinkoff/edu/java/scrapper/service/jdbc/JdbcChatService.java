@@ -1,12 +1,11 @@
 package ru.tinkoff.edu.java.scrapper.service.jdbc;
 
-import org.springframework.stereotype.Service;
+
 import ru.tinkoff.edu.java.scrapper.database.dto.Chat;
 import ru.tinkoff.edu.java.scrapper.database.repository.ChatRepository;
 import ru.tinkoff.edu.java.scrapper.exceptions.ChatDoesntExistException;
 import ru.tinkoff.edu.java.scrapper.service.ChatService;
 
-@Service
 public class JdbcChatService implements ChatService {
     private final ChatRepository chatRepository;
 
