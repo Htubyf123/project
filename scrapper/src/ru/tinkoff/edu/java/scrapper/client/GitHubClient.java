@@ -4,7 +4,7 @@ import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.web.reactive.function.client.WebClient;
 import ru.tinkoff.edu.java.scrapper.dto.RepositoryResponse;
-import main.java.GithubRepository;
+import main.ru.tinkoff.edu.java.link_parser.GithubRepository;
 import java.time.OffsetDateTime;
 
 public class GitHubClient {

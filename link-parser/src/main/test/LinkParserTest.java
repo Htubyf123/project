@@ -1,9 +1,9 @@
 package main.test;
 
 import org.junit.jupiter.api.Test;
-import main.java.GithubRepository;
-import main.java.NullURLParser;
-import main.java.StackOverflowQuestion;
+import main.ru.tinkoff.edu.java.link_parser.GithubRepository;
+import main.ru.tinkoff.edu.java.link_parser.NullURLParser;
+import main.ru.tinkoff.edu.java.link_parser.StackOverflowQuestion;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -11,7 +11,7 @@ import ru.tinkoff.edu.java.bot.annotation.Command;
 import ru.tinkoff.edu.java.scrapper.client.ScrapperClient;
 import ru.tinkoff.edu.java.scrapper.dto.AddLinkRequest;
 import ru.tinkoff.edu.java.scrapper.dto.RemoveLinkRequest;
-import main.java.NullURLParser;
+import main.ru.tinkoff.edu.java.link_parser.NullURLParser;
 import java.lang.reflect.Method;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 @Component
 public class pomogator2001_bot extends Bot {
     private final TelegramBot telegramBot;
-    private final ScrapperClient scrapperClient;
+    private  ScrapperClient scrapperClient;
 
     public pomogator2001_bot(@Value("${bot.token}") String token, ScrapperClient scrapperClient) {
         this.telegramBot = new TelegramBot(token);
