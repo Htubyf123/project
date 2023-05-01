@@ -15,8 +15,7 @@ public class ScrapperClient {
     public ScrapperClient() {
         webClient = WebClient.create(BASE_URL);
     }
-
-    public ScrapperClient(String baseUrl) {
+    public ScrapperClient (String baseUrl) {
         this.webClient = WebClient.create(baseUrl);
     }
 

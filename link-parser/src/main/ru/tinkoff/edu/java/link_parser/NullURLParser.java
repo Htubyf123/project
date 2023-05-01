@@ -1,4 +1,5 @@
-package main.java;
+package main.ru.tinkoff.edu.java.link_parser;
+
 public record NullURLParser() {
     private static GitHubURLParser gitHubParser;
     private static StackOverflowURLParser stackOverflowParser;
@@ -8,7 +9,7 @@ public record NullURLParser() {
         stackOverflowParser = new StackOverflowURLParser();
     }
 
-    public ParsedUrl parse(String url) {
+    public static ParsedUrl parse(String url) {
         ParsedUrl result = null;
         // try the GitHub parser
         result = gitHubParser.parse(url);

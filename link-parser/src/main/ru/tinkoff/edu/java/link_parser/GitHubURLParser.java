@@ -1,4 +1,5 @@
-package main.java;
+package main.ru.tinkoff.edu.java.link_parser;
+
 public record GitHubURLParser() {
 
     public ParsedUrl parse(String url) {
