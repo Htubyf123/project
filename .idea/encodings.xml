@@ -6,7 +6,9 @@
     <file url="file://$PROJECT_DIR$/link-parser/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/link-parser/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/scrapper-jooq/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/scrapper-jooq/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/scrapper/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/scrapper/src/main/java/ru/tinkoff/edu/java/scrapper/database/repository/jdbc/JdbcChatLinkRepository.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/scrapper/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />

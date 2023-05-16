@@ -29,3 +29,4 @@ public class JooqCodegen {
 
         GenerationTool.generate(configuration);
     }
+}
