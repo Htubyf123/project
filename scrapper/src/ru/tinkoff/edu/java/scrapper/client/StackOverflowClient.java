@@ -4,10 +4,14 @@ import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.web.reactive.function.client.WebClient;
 import ru.tinkoff.edu.java.scrapper.dto.QuestionResponse;
+import main.ru.tinkoff.edu.java.link_parser.StackOverflowQuestion;
+import org.springframework.boot.configurationprocessor.json.JSONArray;
 
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
+import java.util.ArrayList;
+import java.util.List;
 
 public class StackOverflowClient {
     private final WebClient webClient;
@@ -21,19 +25,43 @@ public class StackOverflowClient {
         this.webClient = WebClient.create(baseUrl);
     }
 
-    public QuestionResponse fetchQuestion(long id) {
+    public QuestionResponse fetchQuestion(StackOverflowQuestion question) {
         try {
-            JSONObject obj = new JSONObject(requestQuestion(id)).getJSONArray("items").getJSONObject(0);
-            return new QuestionResponse(obj.getLong("question_id"), obj.getString("title"),
-                    OffsetDateTime.of(LocalDateTime.ofEpochSecond(obj.getLong("last_edit_date"),
-                            0, ZoneOffset.UTC), ZoneOffset.UTC));
+            JSONObject obj = new JSONObject(requestQuestion(question.id())).
+                    getJSONArray("items").getJSONObject(0);
+            long id = obj.getLong("question_id");
+            String title = obj.getString("title");
+            OffsetDateTime updatedAt = convert(obj.getLong("last_activity_date"));
+            long closed = obj.optLong("closed_date", -1);
+            OffsetDateTime closedAt = closed == -1 ? null : convert(closed);
+            var answersTime = getAnswersTime(question.id());
+            return new QuestionResponse(id, title, updatedAt, closedAt, answersTime);
+        } catch (JSONException e) {
+            return null;
+        }
+    }
+    private List<OffsetDateTime> getAnswersTime(long id) {
+        try {
+            JSONArray answers = new JSONObject(requestQuestionAnswers(id)).getJSONArray("items");
+            List<OffsetDateTime> list = new ArrayList<>();
+            for (int i = 0; i < answers.length(); i++) {
+                list.add(convert(answers.getJSONObject(i).getLong("creation_date")));
+            }
+            return list;
         } catch (JSONException e) {
             return null;
         }
     }
 
+    private OffsetDateTime convert(long time) {
+        return OffsetDateTime.of(LocalDateTime.ofEpochSecond(time, 0, ZoneOffset.UTC), ZoneOffset.UTC);
+    }
     private String requestQuestion(long id) {
         return webClient.get().uri("/questions/{id}?site=stackoverflow", id).
-                retrieve().bodyToMono(String.class).share().block();
+                retrieve().bodyToMono(String.class).block();
+    }
+    private String requestQuestionAnswers(long id) {
+        return webClient.get().uri("/questions/{id}/answers?site=stackoverflow", id).
+                retrieve().bodyToMono(String.class).block();
     }
 }

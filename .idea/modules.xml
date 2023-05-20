@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/bot.iml" filepath="$PROJECT_DIR$/bot.iml" />
       <module fileurl="file://$PROJECT_DIR$/link-parser/link-parser.iml" filepath="$PROJECT_DIR$/link-parser/link-parser.iml" />
       <module fileurl="file://$PROJECT_DIR$/scrapper.iml" filepath="$PROJECT_DIR$/scrapper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/scrapper-jooq.iml" filepath="$PROJECT_DIR$/scrapper-jooq.iml" />
     </modules>
   </component>
 </project>
